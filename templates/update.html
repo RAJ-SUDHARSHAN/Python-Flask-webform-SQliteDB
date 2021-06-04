@@ -1,0 +1,16 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block title %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css')}}">
+    <meta charset="UTF-8">
+    <title>Update</title>
+{% endblock %}
+{% block content %}
+    <form action="/forms/{{update_form.id}}" METHOD="POST">
+            {% if is_edit: %}
+                {{ wtf.quick_form(form) }}
+            {% else: %}
+                {{ wtf.quick_form(form) }}
+            {% endif %}
+    </form>
+{% endblock %}

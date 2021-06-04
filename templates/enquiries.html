@@ -1,0 +1,62 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css')}}">
+    <meta charset="UTF-8">
+    <title>Enquiries</title>
+{% endblock %}
+
+{% block content %}
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+<table class="table table-hover table-striped">
+        <tr>
+            <td>
+                {%if guests == []: %}
+                <p>No registrations yet.</p>
+                {% endif %}
+            </td>
+        </tr>
+        <th>Name</th>
+        <th>Mobile</th>
+        <th>Email</th>
+        <th>gender</th>
+        <th>Subject</th>
+        {% for guest in guests %}
+        <tr>
+            <td>
+                {{guest.name}}
+            </td>
+            <td>
+                 {{guest.mobile}}
+            </td>
+            <td>
+                 {{guest.email}}
+            </td>
+            <td>
+                {{guest.gender}}
+            </td>
+            <td>
+                {{guest.subject}}
+            </td>
+        </tr>
+        {% endfor %}
+</table>
+
+{% endblock %}
